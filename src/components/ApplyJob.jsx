@@ -52,12 +52,11 @@ const ApplyJobDrawer = ({ job, user, applied = false, fetchJob }) => {
     resolver: zodResolver(schema),
   });
 
-
-  const{
+  const {
     loading: loadingApply,
     error: errorApply,
     fn: fnApply,
-  } = useFetch(applyToJob)
+  } = useFetch(applyToJob);
 
   const onSubmit = (data) => {
     fnApply({
@@ -66,15 +65,16 @@ const ApplyJobDrawer = ({ job, user, applied = false, fetchJob }) => {
       candidate_id: user.id,
       name: user.fullName,
       status: "applied",
-      resume: data.resume[0]
+      resume: data.resume[0],
     }).then((res) => {
-      console.log(res);
-      fetchJob()
-      reset()
-    }).catch((error) => {
-      console.log("Application failed:",error);
-    })
-  }
+        console.log(res);
+        fetchJob();
+        reset();
+      })
+      .catch((error) => {
+        console.log("Application failed:", error);
+      });
+  };
 
   return (
     <Drawer open={applied ? false : undefined}>
@@ -95,9 +95,10 @@ const ApplyJobDrawer = ({ job, user, applied = false, fetchJob }) => {
           <DrawerDescription>Please fill the form below</DrawerDescription>
         </DrawerHeader>
 
-        <form 
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-4 p-4 pb-0">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col gap-4 p-4 pb-0"
+        >
           <Input
             type="number"
             placeholder="Years of experience"
@@ -125,9 +126,7 @@ const ApplyJobDrawer = ({ job, user, applied = false, fetchJob }) => {
             name="education"
             control={control}
             render={({ field }) => (
-              <RadioGroup 
-              onValueChange={field.onChange}
-              {...field}>
+              <RadioGroup onValueChange={field.onChange} {...field}>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="Intermediate" id="intermediate" />
                   <Label htmlFor="intermediate">Intermediate</Label>
@@ -144,7 +143,7 @@ const ApplyJobDrawer = ({ job, user, applied = false, fetchJob }) => {
             )}
           />
 
-          {errors.education &&  (
+          {errors.education && (
             <p className="text-red-500">{errors.education.message}</p>
           )}
 
@@ -163,7 +162,7 @@ const ApplyJobDrawer = ({ job, user, applied = false, fetchJob }) => {
             <p className="text-red-500">{errorApply?.message}</p>
           )}
 
-          {loadingApply  && <BarLoader width={"100%"} color="#36d7b7"/>}
+          {loadingApply && <BarLoader width={"100%"} color="#36d7b7" />}
 
           <Button type="submit" variant="blue" size="lg">
             Apply

@@ -99,7 +99,7 @@ const JobPage = () => {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="open">Open</SelectItem>
-            <SelectItem value="closed">Open</SelectItem>
+            <SelectItem value="closed">Closed</SelectItem>
           </SelectContent>
         </Select>
       )}
