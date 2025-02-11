@@ -25,7 +25,7 @@ export async function applyToJob(token,_, jobData) {
         resume,
       },
     ])
-    .select();
+    .select("*, job:jobs(title),company:companies(name)")
 
   if (error) {
     console.error("Error Submitting Applications", error);

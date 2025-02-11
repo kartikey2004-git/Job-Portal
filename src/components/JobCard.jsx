@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useUser } from "@clerk/clerk-react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Heart, MapPinIcon, Trash2Icon } from "lucide-react";
