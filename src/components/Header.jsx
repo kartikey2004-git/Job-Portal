@@ -35,8 +35,7 @@ const Header = () => {
         <Link>
           <img src="/Logo.png" alt="Logo" className="h-20" />
         </Link>
-
-        <div className="flex gap-8">
+        <div className={`flex gap-8`}>
           <SignedOut>
             <Button
               onClick={() => setShowSignIn(true)}
@@ -87,12 +86,14 @@ const Header = () => {
       {showSignIn && (
         <div
           onClick={handleOverlayClick}
-          className="fixed inset-0  flex  items-center justify-center bg-black bg-opacity-50 "
+          className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50 overflow-auto"
         >
-          <SignIn
-            signUpForceRedirectUrl="/onboarding"
-            fallbackRedirectUrl="/onboarding"
-          />
+          <div className=" p-4 rounded-lg max-w-md w-full">
+            <SignIn
+              signUpForceRedirectUrl="/onboarding"
+              fallbackRedirectUrl="/onboarding"
+            />
+          </div>
         </div>
       )}
     </>

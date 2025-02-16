@@ -9,16 +9,38 @@ import Autoplay from "embla-carousel-autoplay";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import companies from "../data/companies.json";
 import faqs from "../data/faqs.json";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import BlurText from "@/components/uiComponents/BlurText";
+import ShinyText from "@/components/uiComponents/ShinyText";
+import TiltedCard from "@/components/uiComponents/TiltedCard";
 
 const LandingPage = () => {
+  const handleAnimationComplete = () => {
+    console.log("Animation completed!");
+  };
   return (
+  <>
     <main className="flex flex-col gap-10 sm:gap-20 py-10 sm:py-20">
       <section className="text-center">
-        <h1 className="flex flex-col items-center justify-center gradient-title text-4xl font-extrabold sm:text-6xl lg:text-8xl tracking-tighter py-4">
-          Find Your Dream Job
+        <h1 className="flex flex-col items-center justify-center text-4xl font-extrabold sm:text-6xl lg:text-8xl tracking-tighter py-4">
+          <ShinyText
+            text="Find Your Dream Job"
+            disabled={false}
+            speed={2}
+            className="custom-class"
+          />
           <span className="flex items-center gap-2 lg:gap-6">
-            and get
+            <ShinyText
+              text="and get"
+              disabled={false}
+              speed={3}
+              className="custom-class"
+            />
             <img
               src="/Logo.png"
               alt="hirred Logo"
@@ -27,10 +49,14 @@ const LandingPage = () => {
           </span>
         </h1>
 
-        <p className="text-gray-300 sm:mt-4 text-xs sm:text-xl">
-          Discover thousands of job opportunities or connect with the ideal
-          candidate.
-        </p>
+        <BlurText
+          text="Discover thousands of job opportunities or connect with the ideal candidate."
+          delay={150}
+          animateBy="words"
+          direction="top"
+          onAnimationComplete={handleAnimationComplete}
+          className="text-2xl mb-8 sm:mt-4 text-gray-300 sm:text-xl"
+        />
       </section>
 
       <div className="flex gap-6 justify-center">
@@ -70,7 +96,18 @@ const LandingPage = () => {
         </CarouselContent>
       </Carousel>
 
-      <img src="/banner.webp" alt="" className="w-full" />
+      <div className="w-full mb-48">
+        <TiltedCard
+          imageSrc="./banner.webp"
+          altText="Kendrick Lamar - GNX Album Cover"
+          captionText="Job-Portal"
+          rotateAmplitude={12}
+          scaleOnHover={1.2}
+          showMobileWarning={false}
+          showTooltip={true}
+          displayOverlayContent={true}
+        />
+      </div>
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card>
@@ -94,19 +131,22 @@ const LandingPage = () => {
         </Card>
       </section>
 
-      <Accordion  type="single" collapsible>
+      <Accordion type="single" collapsible>
         {faqs.map((faq, index) => {
           return (
-            <AccordionItem className="border-1  border-b-gray-950" key={index} value={`item-${index + 1}`}>
+            <AccordionItem
+              className="border-1  border-b-gray-950"
+              key={index}
+              value={`item-${index + 1}`}
+            >
               <AccordionTrigger>{faq.question}</AccordionTrigger>
-              <AccordionContent>
-                {faq.answer}
-              </AccordionContent>
+              <AccordionContent>{faq.answer}</AccordionContent>
             </AccordionItem>
           );
         })}
       </Accordion>
     </main>
+    </>
   );
 };
 

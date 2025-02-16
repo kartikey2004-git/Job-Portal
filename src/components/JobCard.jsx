@@ -15,38 +15,36 @@ const JobCard = ({
   onJobSaved = () => {},
 }) => {
 
-  const [saved, setSaved] = useState(savedinit)
+  const [saved, setSaved] = useState(savedinit);
 
   const {
     fn: fnSavedJob,
     data: savedJob,
     loading: loadingSavedJob,
-  } = useFetch(saveJob,{
+  } = useFetch(saveJob, {
     alreadySaved: saved
   });
-
 
   const { user } = useUser();
 
   const handleSavedJobs = async () => {
     await fnSavedJob({
-      user_id:user.id,
+      user_id: user.id,
       job_id: job.id
-    })
-    onJobSaved()
-  }
+    });
+    onJobSaved();
+  };
 
   useEffect(() => {
-    if(savedJob !== undefined) setSaved(savedJob?.length > 0)
-  }, [savedJob])
-  
-
-
+    if (Array.isArray(savedJob)) {
+      setSaved(savedJob.length > 0);
+    }
+  }, [savedJob]);
 
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col p-4 sm:p-6 gap-4">
       <CardHeader>
-        <CardTitle className="flex justify-between font-bold">
+        <CardTitle className="flex justify-between font-bold text-lg sm:text-xl">
           {job.title}
           {isMyJob && (
             <Trash2Icon
@@ -58,40 +56,41 @@ const JobCard = ({
         </CardTitle>
       </CardHeader>
 
-
       <CardContent className="flex flex-col gap-4 flex-1">
-        <div className="flex justify-between">
-          {job.company && <img src={job.company.logo_url} className="h-6" />}
-
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          {job?.company?.logo_url && (
+            <img src={job.company.logo_url} className="h-10 sm:h-7 object-contain" alt="Company Logo" />
+          )}
           <div className="flex gap-2 items-center">
-            <MapPinIcon size={15}/>{job.location}
+            <MapPinIcon size={15} />
+            <span className="text-sm sm:text-base">{job.location}</span>
           </div>
         </div>
         <hr />
-
-        {job.description.substring(0,job.description.indexOf("."))}
+        <p className="text-sm sm:text-base">
+          {job.description.substring(0, job.description.indexOf("."))}
+        </p>
       </CardContent>
 
-      <CardFooter className="flex gap-2">
-        <Link to={`/job/${job.id}`} className="flex-1">
-        <Button variant="secondary" className="w-full">
-          More Details
-        </Button>
+      <CardFooter className="flex flex-col sm:flex-row gap-4 sm:gap-2 w-full">
+        <Link to={`/job/${job.id}`} className="w-full sm:w-auto">
+          <Button variant="secondary" className="w-full sm:w-auto">
+            More Details
+          </Button>
         </Link>
 
         {!isMyJob && (
-          <Button 
-          variant='outline' 
-          className="w-15"
-          onClick={handleSavedJobs}
-          disabled={loadingSavedJob}          
+          <Button
+            variant="outline"
+            className="w-full sm:w-auto"
+            onClick={handleSavedJobs}
+            disabled={loadingSavedJob}
           >
-            { saved? (
-              <Heart size={20} stroke="red" fill="red"/> 
-            ):(
-              <Heart size={20}/>
+            {saved ? (
+              <Heart size={20} stroke="red" fill="red" />
+            ) : (
+              <Heart size={20} />
             )}
-
           </Button>
         )}
       </CardFooter>

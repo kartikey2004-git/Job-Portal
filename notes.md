@@ -8,3 +8,18 @@ title company id description location requirements , is that job posted or not
 
 
 If a recruiter already added a  job they should listed in list of companies
+
+
+Timestamps:
+
+• Setup Vite react with Shadcn UI
+• Shadcn UI components
+• Defining the App routes
+• Header component
+• Supabase Setup
+• Clerk Authentication Setup 
+• Connecting Supabase with Clerk
+• Implementing user authentication
+• Protected Routes
+• User Onboarding page
+• Creating tables in supabase
