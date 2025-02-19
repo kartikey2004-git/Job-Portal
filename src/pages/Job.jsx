@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { getSingleJob, updateHiringStatus } from "@/api/apiJobs";
 import ApplicationCard from "@/components/ApplicationCard";
 import ApplyJobDrawer from "@/components/ApplyJob";
@@ -18,6 +19,8 @@ import { BarLoader } from "react-spinners";
 
 const JobPage = () => {
   const { isLoaded, user } = useUser();
+  console.log(user);
+  
 
   const { id } = useParams();
 
