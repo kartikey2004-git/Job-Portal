@@ -106,12 +106,12 @@ const LandingPage = () => {
           </CarouselContent>
         </Carousel>
 
-        <div>
-          <img src="./bannerfinal.webp" alt="" />
+        <div className="flex justify-center">
+          <img src="./bannerfinal.webp" alt="" className="w-full" />
         </div>
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Card className="card">
+          <Card className="card hover:-translate-y-3 transition-all duration-300 ease-in-out">
             <CardHeader>
               <CardTitle>For Job Seekers</CardTitle>
             </CardHeader>
@@ -121,7 +121,7 @@ const LandingPage = () => {
             </CardContent>
           </Card>
 
-          <Card className="card">
+          <Card className="card hover:-translate-y-3 transition-all duration-300 ease-in-out">
             <CardHeader>
               <CardTitle>For Employers</CardTitle>
             </CardHeader>
@@ -132,8 +132,8 @@ const LandingPage = () => {
           </Card>
         </section>
 
-        <div className="flex justify-between lg:flex-row md:flex-col md:h-1/3">
-          <div className="lg:ml-44 lg:w-16 lg:mb-20 md:h-1/3 md:mb-40 md:w-full">
+        <div className="flex justify-between gap-36 lg:flex-row  md:flex-col md:h-1/3 sm:hidden md:hidden lg:flex ">
+          <div className="lg:ml-36 lg:w-8 lg:mb-2 md:h-1/3 md:mb-20 md:w-full mr-36 ">
             <TiltedCard
               imageSrc="./dreamjob1.webp"
               altText="Job-portal banner"
@@ -146,7 +146,7 @@ const LandingPage = () => {
             />
           </div>
 
-          <div className="lg:w-10 lg:mb-20 md:h-1/3 md:mb-40">
+          <div className="lg:w-8 lg:mb-2 md:h-1/3 md:mb-40 mr-16">
             <TiltedCard
               imageSrc="./manage.webp"
               altText="Job-portal banner"
@@ -159,7 +159,7 @@ const LandingPage = () => {
             />
           </div>
 
-          <div className="lg:w-10 lg:mr-44 lg:mb-20 md:h-1/3 md:mb-40">
+          <div className="lg:w-8 lg:mr-52 lg:mb-2 md:h-1/3 md:mb-40 ml-20 mr-40">
             <TiltedCard
               imageSrc="./preference.webp"
               altText="Job-portal banner"
@@ -173,37 +173,43 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row justify-between gap-10">
-          <Card className="w-full lg:w-1/3 h-64">
-            <CardHeader className="gap-4">
+        <div className="flex justify-center">
+          <div className="text-4xl p-4 border-2 -mb-5 rounded-md w-full text-center bg-[#020817]">
+            Key Features of Job Portal
+          </div>
+        </div>
+
+        <div className="flex flex-col lg:flex-row justify-between gap-10 ">
+          <Card className="w-full lg:w-1/3 min-h-[16rem] flex flex-col hover:-translate-y-3 transition-all duration-300 ease-in-out">
+            <CardHeader className="gap-4 flex-grow">
               <CardTitle>Find Your Dream Job</CardTitle>
               <CardDescription>
                 Explore job listings across various industries and locations.
                 Filter by role, company, or location to find the perfect match.
               </CardDescription>
             </CardHeader>
-            <CardFooter className="mt-10 flex justify-between items-center">
+            <CardFooter className="mt-auto flex justify-between items-center">
               <Button>Browse Jobs</Button>
               <HiOutlineDocumentMagnifyingGlass className="text-xl" />
             </CardFooter>
           </Card>
 
-          <Card className="w-full lg:w-1/3 h-64">
-            <CardHeader className="gap-4">
+          <Card className="w-full lg:w-1/3 min-h-[16rem] flex flex-col hover:-translate-y-3 transition-all duration-300 ease-in-out">
+            <CardHeader className="gap-4 flex-grow">
               <CardTitle>Manage Your Applications</CardTitle>
               <CardDescription>
                 Stay organized with our application tracker. Get notified about
                 interview schedules and application statuses.
               </CardDescription>
             </CardHeader>
-            <CardFooter className="mt-10 flex justify-between items-center">
+            <CardFooter className="mt-auto flex justify-between items-center">
               <Button>Track Applications</Button>
               <IoCalendar className="text-xl" />
             </CardFooter>
           </Card>
 
-          <Card className="w-full lg:w-1/3 h-64">
-            <CardHeader className="gap-4">
+          <Card className="w-full lg:w-1/3 min-h-[16rem] flex flex-col hover:-translate-y-3 transition-all duration-300 ease-in-out">
+            <CardHeader className="gap-4 flex-grow">
               <CardTitle>Set Your Job Preferences</CardTitle>
               <CardDescription>
                 Tailor your job recommendations by selecting your preferred job
@@ -211,7 +217,7 @@ const LandingPage = () => {
                 fit your career goals.
               </CardDescription>
             </CardHeader>
-            <CardFooter className="mt-10 flex justify-between items-center">
+            <CardFooter className="mt-auto flex justify-between items-center">
               <Button>Set Preferences</Button>
               <FaUserGear className="text-xl" />
             </CardFooter>
@@ -225,7 +231,7 @@ const LandingPage = () => {
           {faqs.map((faq, index) => {
             return (
               <AccordionItem
-                className="border-1  border-b-gray-950"
+                className=""
                 key={index}
                 value={`item-${index + 1}`}
               >

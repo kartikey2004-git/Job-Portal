@@ -35,7 +35,7 @@ const Header = () => {
         <Link>
           <img src="/Logo.png" alt="Logo" className="h-20" />
         </Link>
-        <div className={`flex gap-8`}>
+        <div className="flex gap-8">
           <SignedOut>
             <Button
               onClick={() => setShowSignIn(true)}

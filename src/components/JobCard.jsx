@@ -36,9 +36,7 @@ const JobCard = ({
   };
 
   useEffect(() => {
-    if (Array.isArray(savedJob)) {
-      setSaved(savedJob.length > 0);
-    }
+    if (savedJob !== undefined) setSaved(savedJob.length > 0);
   }, [savedJob]);
 
   return (
@@ -72,7 +70,7 @@ const JobCard = ({
         </p>
       </CardContent>
 
-      <CardFooter className="flex flex-col sm:flex-row gap-4 sm:gap-2 w-full">
+      <CardFooter className="flex flex-col sm:flex-row gap-4 sm:gap-2 w-full justify-between">
         <Link to={`/job/${job.id}`} className="w-full sm:w-auto">
           <Button variant="secondary" className="w-full sm:w-auto">
             More Details
